@@ -25,8 +25,11 @@
     header{display:flex;align-items:center;gap:20px}
     .brand{display:flex;align-items:center;gap:16px}
     .logo{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--pink),#fff);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.06);font-weight:700;font-size:28px;color:#111}
+    
+    /* Updated Title Lines */
     .name h1{margin:0;font-size:20px}
-    .name p{margin:2px 0 0;color:var(--muted);font-size:13px}
+    .name .title-line{margin:2px 0 0;font-size:13px;color:var(--muted);font-weight:500}
+
     nav{margin-left:auto}
     nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px}
 
@@ -107,7 +110,8 @@
         <div class="logo">CLO</div>
         <div class="name">
           <h1>Carryl Lou M. Oriel</h1>
-          <p>Virtual Assistant · SEO &amp; E-commerce Specialist</p>
+          <p class="title-line">Virtual Assistant · SEO &amp; E-commerce Specialist</p>
+          <p class="title-line">Admin & Reporting</p>
         </div>
       </div>
       <nav>
@@ -221,66 +225,4 @@
             <input name="Email" placeholder="Your email">
             <input name="Subject" placeholder="Subject">
           </div>
-          <textarea name="Message" placeholder="How can I help?"></textarea>
-          <div style="margin-top:10px">
-            <button class="btn" type="submit">Email me</button>
-          </div>
-        </form>
-
-        <aside class="card info">
-          <h4 style="margin:0 0 8px">Get in touch</h4>
-          <p class="meta">Email: carryllou.30@gmail.com<br>Phone: +63 918 686 7089</p>
-          <p style="margin-top:12px;color:var(--muted)">Available for remote work, SEO projects, e-commerce setups, and long-term VA positions.</p>
-
-          <div style="margin-top:14px">
-            <strong>Quick Links</strong>
-            <p style="margin:6px 0"><a href="https://www.linkedin.com/in/carryl-lou-oriel-b3b510187" target="_blank" style="color:var(--muted);text-decoration:none">LinkedIn</a></p>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <footer>
-      <div class="logo">CLO</div>
-      <a class="btn" href="https://www.canva.com/design/DAGVllaxiBc/Csd5QIQ8McdQ7LApd3upDg/view?utm_content=DAGVllaxiBc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h51441b1088" target="_blank">View My Resume</a>
-      <br><br>
-      © <span id="yr"></span> Carryl Lou M. Oriel — On-page SEO · Shopify &amp; WordPress · Reporting
-    </footer>
-  </div>
-
-  <script>
-    // Year
-    document.getElementById('yr').textContent = new Date().getFullYear();
-
-    // Smooth scroll for Let’s Connect
-    document.getElementById('lets-connect').addEventListener('click', function(e){
-      e.preventDefault();
-      document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'});
-    });
-
-    // Lightbox functions
-    function openLightbox(img){
-      const lightbox=document.getElementById('lightbox');
-      const lightboxImg=document.getElementById('lightbox-img');
-      lightboxImg.src=img.src;
-      lightbox.style.display='flex';
-    }
-    function closeLightbox(e){
-      e.stopPropagation();
-      document.getElementById('lightbox').style.display='none';
-    }
-
-    // Scroll reveal for sections
-    const revealEls = document.querySelectorAll('.card, section, .project-item');
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.style.opacity=1;
-          entry.target.style.transform='none';
-        }
-      })
-    },{threshold:0.12});
-    revealEls.forEach(el=>{el.style.opacity=0;el.style.transform='translateY(18px)';obs.observe(el)});
-  </script>
-</body>
-</html>
+          <t
