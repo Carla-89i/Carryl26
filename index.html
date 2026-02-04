@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Carryl Lou Oriel — Portfolio</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <meta name="description" content="Carryl Lou Oriel — Virtual Assistant | SEO & E-commerce Specialist | Admin & Reporting">
+  <style>
+    :root{
+      --bg:#faf7f5;
+      --pink:#f6d7da;
+      --muted:#6b6b6b;
+      --accent:#2C3E50;
+      --card:#ffffff;
+      --radius:12px;
+      --max-w:1100px;
+      font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--accent);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:var(--max-w);margin:36px auto;padding:28px}
+
+    /* Header */
+    header{display:flex;align-items:center;gap:20px}
+    .brand{display:flex;align-items:center;gap:16px}
+    .logo{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--pink),#fff);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,0.06);font-weight:700;font-size:28px;color:#111}
+    .name h1{margin:0;font-size:20px}
+    .name p{margin:2px 0 0;color:var(--muted);font-size:13px}
+    nav{margin-left:auto}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:14px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;align-items:center;position:relative}
+    .card{background:var(--card);padding:26px;border-radius:var(--radius);box-shadow:0 10px 30px rgba(18,24,34,0.06)}
+    .intro h2{margin:0 0 10px;font-size:28px;opacity:0;transform:translateY(20px);animation:fadeUp .6s ease .1s forwards}
+    .intro p{margin:0;color:var(--muted);line-height:1.6;opacity:0;transform:translateY(20px);animation:fadeUp .6s ease .2s forwards}
+    .cta{margin-top:16px}
+    .btn{display:inline-block;background:#2C3E50;color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600;margin-right:10px;transition:transform .25s ease}
+    .btn:hover{transform:translateY(-3px)}
+
+    /* Skills chips */
+    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .chip{background:rgba(255,255,255,0.6);padding:8px 12px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    /* Hero photo */
+    .hero-photo{position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(135deg,var(--pink),#fff);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 35px rgba(0,0,0,0.08)}
+    .hero-photo img{width:100%;border-radius:16px;mix-blend-mode:multiply;opacity:0;transform:translateY(20px);animation:fadeUp .6s ease .3s forwards}
+    .hero-photo::after{content:'CLO';position:absolute;bottom:12px;right:18px;font-size:32px;font-weight:700;color:rgba(44,62,80,0.12);letter-spacing:2px}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+    /* About */
+    .about{background:var(--pink);padding:40px 26px;border-radius:16px;margin-top:40px;display:flex;align-items:center;gap:28px}
+    .about img{width:320px;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,0.08)}
+    .about-text h2{margin:0 0 12px;font-size:26px;color:var(--accent)}
+    .about-text p{margin:0 0 12px;color:var(--accent);line-height:1.6}
+    .about .btn{background:var(--pink);color:#2C3E50;border:1px solid #2C3E50;padding:10px 14px}
+    .about .btn:hover{background:#2C3E50;color:#fff}
+
+    @media(max-width:900px){.about{flex-direction:column;text-align:center}.about img{width:100%;max-width:320px}}
+
+    /* Experience grid */
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
+    .exp{padding:18px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfbfb);border:1px solid rgba(0,0,0,0.03)}
+    .exp h3{margin:0 0 6px;font-size:16px}
+    .exp p{margin:4px 0;color:var(--muted);font-size:14px}
+
+    /* Projects gallery */
+    .projects-section{margin-top:28px}
+    .projects-title{font-weight:700;font-size:26px;color:#222;margin-bottom:12px}
+    .projects{margin-top:8px;overflow-x:auto;display:flex;gap:16px;scroll-behavior:smooth;padding-bottom:10px}
+    .project-item{flex:0 0 auto;width:260px;text-align:center}
+    .project-item img{width:100%;height:180px;object-fit:cover;border-radius:12px;cursor:pointer;transition:transform .3s ease,box-shadow .3s ease}
+    .project-item img:hover{transform:scale(1.03);box-shadow:0 6px 20px rgba(0,0,0,0.12)}
+    .project-item p{margin-top:8px;color:var(--muted);font-size:14px}
+
+    /* Lightbox */
+    .lightbox{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(246,215,218,0.95);justify-content:center;align-items:center;z-index:999}
+    .lightbox img{max-width:90%;max-height:80%;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.2);object-fit:contain}
+    .lightbox .close{position:absolute;top:20px;right:30px;font-size:40px;font-weight:700;color:#2C3E50;cursor:pointer}
+
+    /* Contact */
+    .contact{margin-top:26px;display:flex;gap:18px;align-items:flex-start}
+    .contact .card{flex:1}
+    .form-row{display:flex;gap:10px}
+    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e6e6;font-size:14px}
+    textarea{min-height:110px}
+    .contact .info{width:300px}
+
+    footer{margin-top:60px;padding-top:24px;border-top:1px solid #f0f0f0;color:var(--muted);font-size:13px;text-align:center}
+    footer .logo{margin:0 auto 12px}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .contact{flex-direction:column}
+      .contact .info{width:100%}
+      nav{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">CLO</div>
+        <div class="name">
+          <h1>Carryl Lou M. Oriel</h1>
+          <p>Virtual Assistant · SEO &amp; E-commerce Specialist</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card intro">
+        <h2>Hello — I’m Carryl Lou</h2>
+        <p>I help businesses improve online visibility and operations through on-page SEO, e-commerce management (Shopify/WordPress), and reliable administrative support. I combine 14+ years of administrative experience with technical skills in data reporting, title research, and project coordination.</p>
+        <div class="skills">
+          <div class="chip">On-page SEO</div>
+          <div class="chip">Shopify &amp; WordPress</div>
+          <div class="chip">Reporting &amp; Excel</div>
+          <div class="chip">Project Coordination</div>
+          <div class="chip">Title Search &amp; Research</div>
+        </div>
+        <div class="cta">
+          <a class="btn" href="#contact">Hire me / Contact</a>
+          <a class="btn" href="https://www.canva.com/design/DAGVllaxiBc/Csd5QIQ8McdQ7LApd3upDg/view?utm_content=DAGVllaxiBc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h51441b1088" target="_blank">View My Resume</a>
+        </div>
+      </div>
+
+      <aside class="card hero-photo">
+        <img src="profile.jpg" alt="Carryl Lou Oriel professional photo">
+      </aside>
+    </section>
+
+    <!-- About Me -->
+    <section id="about" class="about">
+      <img src="aboutme.jpg" alt="Friendly workspace photo">
+      <div class="about-text">
+        <h2>Hi, I’m Carryl Lou!</h2>
+        <p>I’m a passionate Virtual Assistant and SEO Specialist who loves helping clients stay organized and visible online. With over 14 years of experience in administration, e-commerce, and digital operations, I bring efficiency, creativity, and reliability to every project I handle.</p>
+        <p>When I’m not working, I enjoy singing, cooking, and spending time at the beach — moments that keep me inspired and balanced.</p>
+        <a class="btn" href="#contact" id="lets-connect">Let’s Connect</a>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="work">
+      <h2 style="margin-top:28px">Experience</h2>
+      <div class="grid">
+        <article class="exp">
+          <h3>Administrative Officer / Loans Clerk — Radiowealth Finance Company</h3>
+          <p class="meta">Dec 2011 - Jun 2015 · Rehired Nov 2016 - Jan 2019</p>
+          <p>Prepared daily, weekly, and month-end reporting; managed filing systems, treasury reports, and inventory; processed real estate and chattel mortgage documentation; trained staff and codified office processes to boost productivity.</p>
+        </article>
+
+        <article class="exp">
+          <h3>Data Analyst / Title Searcher — Savant Technologies Inc.</h3>
+          <p class="meta">Feb 2016 - Sep 2016</p>
+          <p>Conducted in-depth title research, analyzed chains of title, obtained historical documents and property maps to complete title packages with accuracy and compliance.</p>
+        </article>
+
+        <article class="exp">
+          <h3>SOX App Data Inputter / Project Assistant — A2BHQ Inc.</h3>
+          <p class="meta">2021 - 2025</p>
+          <p>Performed RCM &amp; SOC1 mapping, key report testing, ITGC documentation, and flowchart editing using Visio. Contributed to compliance reporting and project coordination.</p>
+        </article>
+
+        <article class="exp">
+          <h3>Shopify Admin / E-commerce — Variera</h3>
+          <p class="meta">2020 - 2021</p>
+          <p>Designed Shopify stores, optimized product listings and on-page SEO, managed content in WordPress, and handled SEO-focused content writing for product pages and FAQs.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects & Brand -->
+    <section id="projects" class="projects-section">
+      <div class="projects-title">Projects &amp; Brand</div>
+      <div class="projects">
+        <div class="project-item">
+          <img src="SEO_shopify project_Carryl.png" alt="Shopify SEO Optimization" onclick="openLightbox(this)">
+          <p>Shopify SEO Optimization</p>
+        </div>
+        <div class="project-item">
+          <img src="graphic designing_shopify home page.png" alt="Home Page Graphic Design" onclick="openLightbox(this)">
+          <p>Home Page Graphic Design</p>
+        </div>
+        <div class="project-item">
+          <img src="Product comparison.png" alt="Product Comparison Visuals" onclick="openLightbox(this)">
+          <p>Product Comparison Visuals</p>
+        </div>
+        <div class="project-item">
+          <img src="SEO_shopify project2_Carryl.png" alt="Shopify SEO Projects Overview" onclick="openLightbox(this)">
+          <p>Shopify SEO Projects Overview</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+      <div class="close" onclick="closeLightbox(event)">&times;</div>
+      <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- Contact / Let's Connect -->
+    <section id="contact">
+      <h2 style="margin-top:28px">Contact</h2>
+      <div class="contact">
+        <form class="card" action="mailto:carryllou.30@gmail.com" method="post" enctype="text/plain">
+          <label style="display:block;margin-bottom:8px;font-weight:600">Send a message</label>
+          <input name="Name" placeholder="Your name">
+          <div class="form-row" style="margin-top:8px">
+            <input name="Email" placeholder="Your email">
+            <input name="Subject" placeholder="Subject">
+          </div>
+          <textarea name="Message" placeholder="How can I help?"></textarea>
+          <div style="margin-top:10px">
+            <button class="btn" type="submit">Email me</button>
+          </div>
+        </form>
+
+        <aside class="card info">
+          <h4 style="margin:0 0 8px">Get in touch</h4>
+          <p class="meta">Email: carryllou.30@gmail.com<br>Phone: +63 918 686 7089</p>
+          <p style="margin-top:12px;color:var(--muted)">Available for remote work, SEO projects, e-commerce setups, and long-term VA positions.</p>
+
+          <div style="margin-top:14px">
+            <strong>Quick Links</strong>
+            <p style="margin:6px 0"><a href="https://www.linkedin.com/in/carryl-lou-oriel-b3b510187" target="_blank" style="color:var(--muted);text-decoration:none">LinkedIn</a></p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <div class="logo">CLO</div>
+      <a class="btn" href="https://www.canva.com/design/DAGVllaxiBc/Csd5QIQ8McdQ7LApd3upDg/view?utm_content=DAGVllaxiBc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h51441b1088" target="_blank">View My Resume</a>
+      <br><br>
+      © <span id="yr"></span> Carryl Lou M. Oriel — On-page SEO · Shopify &amp; WordPress · Reporting
+    </footer>
+  </div>
+
+  <script>
+    // Year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // Smooth scroll for Let’s Connect
+    document.getElementById('lets-connect').addEventListener('click', function(e){
+      e.preventDefault();
+      document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'});
+    });
+
+    // Lightbox functions
+    function openLightbox(img){
+      const lightbox=document.getElementById('lightbox');
+      const lightboxImg=document.getElementById('lightbox-img');
+      lightboxImg.src=img.src;
+      lightbox.style.display='flex';
+    }
+    function closeLightbox(e){
+      e.stopPropagation();
+      document.getElementById('lightbox').style.display='none';
+    }
+
+    // Scroll reveal for sections
+    const revealEls = document.querySelectorAll('.card, section, .project-item');
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.style.opacity=1;
+          entry.target.style.transform='none';
+        }
+      })
+    },{threshold:0.12});
+    revealEls.forEach(el=>{el.style.opacity=0;el.style.transform='translateY(18px)';obs.observe(el)});
+  </script>
+</body>
+</html>
